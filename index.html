@@ -69,6 +69,11 @@
   .feature{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
   .feature b{display:block;margin-bottom:6px}
   .feature span{font-size:13px;color:var(--muted)}
+  .proof-grid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:18px;align-items:start}
+  .proof-lower{margin-top:18px}
+  .phone-shot img{width:auto;max-width:100%;max-height:720px;margin:0 auto;object-fit:contain}
+  .workflow-shot img{width:100%;height:auto}
+  .workflow-shot a{display:block}
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .shot{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}
   .shot img{width:100%;border-radius:10px;display:block}
@@ -104,6 +109,8 @@
     .hero{grid-template-columns:1fr;gap:28px;padding-top:34px}
     .hero-card{order:-1}
     .features{grid-template-columns:1fr 1fr}
+    .proof-grid{grid-template-columns:1fr}
+    .phone-shot img{width:100%;max-height:none}
     .price,.grid3,.req{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr 1fr}
     .top nav{display:none}
@@ -124,6 +131,7 @@
     <div class="brand"><span class="mark">F</span> FlowFoundry</div>
     <nav>
       <a href="#features">What's inside</a>
+      <a href="#proof">Proof</a>
       <a href="#gallery">Screens</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
@@ -188,6 +196,22 @@
   </div>
 </section>
 
+<section class="wrap" id="proof">
+  <div class="section-head">
+    <h2>See the workflow. See it on WhatsApp.</h2>
+    <p>A real booking conversation, the reminder with quick replies, and the node map behind both. Demo data only.</p>
+    <p><a class="btn" href="assets/demo-preview.mp4">Watch the 27-second preview</a></p>
+  </div>
+  <div class="proof-grid">
+    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-booking-en.png" alt="WhatsApp booking conversation demo"><small>Booking conversation · demo data</small></div>
+    <div class="shot workflow-shot"><a href="assets/workflow-booking.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-overview.png" alt="n8n booking workflow overview with 36 nodes"><small>Booking workflow · 36 nodes · open the full map</small></a></div>
+  </div>
+  <div class="proof-grid proof-lower">
+    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo data</small></div>
+    <div class="shot workflow-shot"><a href="assets/workflow-reminders.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-reminders.png" alt="n8n reminder workflow map with five nodes"><small>Reminder workflow · 5 nodes · open full size</small></a></div>
+  </div>
+</section>
+
 <section class="wrap" id="gallery">
   <div class="section-head">
     <h2>The card is the first thing the customer sees.</h2>
@@ -198,6 +222,7 @@
     <div class="shot"><img src="assets/calendar-he.png" alt="Hebrew right-to-left weekly availability card"><small>Hebrew — RTL, right-aligned</small></div>
     <div class="shot"><img src="assets/calendar-ar.png" alt="Arabic right-to-left weekly availability card"><small>Arabic — RTL script and Arabic comma</small></div>
     <div class="shot"><img src="assets/calendar-th.png" alt="Thai weekly availability card"><small>Thai — Loma font, Latin digits</small></div>
+    <div class="shot"><img src="assets/calendar-lo.png" alt="Lao weekly availability card"><small>Lao — Lao script, Latin digits</small></div>
   </div>
 </section>
 
