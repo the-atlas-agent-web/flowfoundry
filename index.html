@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhatsApp Appointment Kit for n8n — FlowFoundry</title>
+<meta name="description" content="A production-ready WhatsApp appointment kit for n8n: booking, reminders, cancellation, visual availability card and eight languages. 36 booking nodes, 5 reminder nodes, 160 checks.">
+<style>
+  :root{
+    --ink:#0d2b27; --ink-2:#173f39; --paper:#f6f1e7; --card:#fffdf8;
+    --line:#d9d0bf; --muted:#5d6f69; --accent:#0d6b5f; --accent-2:#dff1ec;
+    --warm:#eadcc7; --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+  a{color:inherit}
+  .top{position:sticky;top:0;z-index:20;background:rgba(246,241,231,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.3px}
+  .mark{width:32px;height:32px;border-radius:10px;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-weight:900}
+  .top nav{display:flex;gap:18px;font-size:14px;color:var(--muted)}
+  .top nav a{text-decoration:none}
+  .top .cta{background:var(--accent);color:#fff;text-decoration:none;font-weight:800;
+    padding:11px 16px;border-radius:999px;font-size:14px}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:54px 0 44px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-2);
+    color:var(--accent);font-weight:800;font-size:13px;padding:7px 11px;border-radius:999px}
+  h1{font-size:clamp(38px,5.4vw,66px);line-height:.98;letter-spacing:-2.6px;margin:18px 0 18px}
+  .lead{font-size:19px;color:var(--muted);max-width:58ch;margin:0 0 24px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);
+    color:#fff;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:999px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .micro{font-size:13px;color:var(--muted);margin-top:12px}
+  .hero-card{background:var(--ink);border-radius:28px;padding:22px;color:#fff;
+    box-shadow:0 30px 70px rgba(13,43,39,.18);position:relative;overflow:hidden}
+  .hero-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;
+    background:rgba(223,241,236,.12);right:-100px;bottom:-120px}
+  .phone{background:#e9e2d5;border-radius:24px;padding:10px;max-width:330px;margin:0 auto;position:relative;z-index:1}
+  .phone-screen{background:#efe9dd;border-radius:18px;padding:12px;color:#132d28}
+  .chat{display:grid;gap:8px;font-size:13px;margin-bottom:10px}
+  .bubble{background:#fff;padding:9px 11px;border-radius:12px 12px 12px 4px;max-width:90%;
+    box-shadow:0 1px 0 rgba(0,0,0,.05)}
+  .bubble.me{background:#d9fdd3;margin-left:auto;border-radius:12px 12px 4px 12px}
+  .bubble b{color:var(--accent)}
+  .bubble img{width:100%;border-radius:9px;display:block;margin-top:7px;border:1px solid #d8cfbf}
+  .chat-label{font-size:11px;color:#5d6f69;margin:0 0 4px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:10px 0 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .stat b{display:block;font-size:26px;letter-spacing:-1px}
+  .stat span{font-size:13px;color:var(--muted)}
+  section{padding:64px 0}
+  .section-head{max-width:720px;margin-bottom:28px}
+  h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-1.5px;margin:0 0 12px}
+  .section-head p{color:var(--muted);font-size:17px;margin:0}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card h3{margin:0 0 8px;font-size:19px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .num{width:34px;height:34px;border-radius:11px;background:var(--accent-2);color:var(--accent);
+    display:grid;place-items:center;font-weight:900;margin-bottom:14px}
+  .features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .feature b{display:block;margin-bottom:6px}
+  .feature span{font-size:13px;color:var(--muted)}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}
+  .shot img{width:100%;border-radius:10px;display:block}
+  .shot small{display:block;color:var(--muted);margin-top:8px;font-size:12px}
+  .price{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+  .price-card{background:var(--ink);color:#fff;border-radius:26px;padding:30px;position:relative;overflow:hidden}
+  .price-card.light{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .price-card .tag{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#9fc7c1}
+  .price-card.light .tag{color:var(--accent)}
+  .big{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1;margin:12px 0 4px}
+  .big small{font-size:15px;font-weight:600;color:#b9c7c5}
+  .price-card.light .big small{color:var(--muted)}
+  .price-card ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:9px;font-size:14px;color:#dfe9e7}
+  .price-card.light ul{color:var(--muted)}
+  .price-card li:before{content:"—";color:#8fd3c9;margin-right:9px}
+  .price-card.light li:before{color:var(--accent)}
+  .price-card .btn{margin-top:22px;width:100%}
+  .price-card.light .btn{background:var(--accent);color:#fff}
+  .note{font-size:12px;color:#b9c7c5;margin-top:10px}
+  .price-card.light .note{color:var(--muted)}
+  .req{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .req ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+  .req li{margin:6px 0}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 17px;margin:8px 0}
+  summary{cursor:pointer;font-weight:800}
+  details p{color:var(--muted);margin:9px 0 0;font-size:15px}
+  .final{background:var(--ink);color:#fff;border-radius:28px;padding:38px;margin:64px auto;width:min(1120px,calc(100% - 40px))}
+  .final h2{color:#fff;margin-bottom:10px}
+  .final p{color:#d9efea;margin:0 0 22px;max-width:62ch}
+  footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 0 48px;color:var(--muted);font-size:13px}
+  footer a{color:var(--muted)}
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:28px;padding-top:34px}
+    .hero-card{order:-1}
+    .features{grid-template-columns:1fr 1fr}
+    .price,.grid3,.req{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .top nav{display:none}
+  }
+  @media(max-width:520px){
+    .wrap{width:calc(100% - 28px)}
+    .features{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+    h1{letter-spacing:-1.6px}
+    .hero-card{padding:14px}
+    .price-card{padding:22px}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="mark">F</span> FlowFoundry</div>
+    <nav>
+      <a href="#features">What's inside</a>
+      <a href="#gallery">Screens</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="cta" href="#pricing">Get the kit</a>
+  </div>
+</header>
+
+<main>
+  <div style="background:#0b1220;color:#9fe3c2;border-bottom:1px solid #1e3a2f;text-align:center;padding:9px 16px;font-size:13px;">
+    Launching soon. Checkout opens after payment verification. <a href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20early%20access" style="color:#7dffb0;">Email for early access</a>.
+  </div>
+
+<section class="wrap hero">
+  <div>
+    <span class="eyebrow">n8n 2.x · WhatsApp Cloud API · 8 languages</span>
+    <h1>A WhatsApp receptionist you can import.</h1>
+    <p class="lead">The production-ready appointment kit for n8n: booking, confirmations, a visual availability card, 24-hour reminders with Confirm/Cancel, and cancellation for customers with more than one appointment.</p>
+    <div class="actions">
+      <a class="btn" href="#pricing">Get early access — $39</a>
+      <a class="btn ghost" href="#pricing">Agency licence — $249</a>
+    </div>
+    <p class="micro">Launch price for the first 50 retail / 20 agency licences. 14-day refund. No subscription.</p>
+    <div class="stats">
+      <div class="stat"><b>36</b><span>booking nodes</span></div>
+      <div class="stat"><b>5</b><span>reminder nodes</span></div>
+      <div class="stat"><b>160</b><span>logic checks</span></div>
+      <div class="stat"><b>8</b><span>languages</span></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="phone">
+      <div class="phone-screen">
+        <p class="chat-label">WhatsApp · Demo Business · demo data</p>
+        <div class="chat">
+          <div class="bubble me">Hi, can I book an appointment?</div>
+          <div class="bubble"><b>Sure — here is this week:</b><br>Tap a day to see times.
+            <img src="assets/calendar-en.png" alt="Weekly availability card with open days and appointment counts">
+          </div>
+          <div class="bubble me">Wednesday 27, 09:00</div>
+          <div class="bubble"><b>Step 3 of 3:</b> Initial consultation · Wed 27/10 · 09:00 · ₪250<br><b>[Confirm] [Change] [Cancel]</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="features">
+  <div class="section-head">
+    <h2>Not another demo workflow.</h2>
+    <p>Most n8n templates stop at “send a message”. This one handles the parts that break in production: double booking, stale slots, duplicate webhooks, failed calendar writes and customers with several appointments.</p>
+  </div>
+  <div class="features">
+    <div class="feature"><b>Day-first booking</b><span>Weekly card, then day, service and time. No ten-row ceiling.</span></div>
+    <div class="feature"><b>Atomic locks</b><span>Per-phone session lock and per-slot lock; two customers cannot take the same time.</span></div>
+    <div class="feature"><b>Failure compensation</b><span>If the appointment row fails after the calendar event is created, the event is deleted and the slot released.</span></div>
+    <div class="feature"><b>Reminder actions</b><span>Confirm arrival or cancel from the template buttons; the bot updates the right appointment.</span></div>
+    <div class="feature"><b>Multiple appointments</b><span>“Cancel” returns a list, so the customer chooses which booking to cancel.</span></div>
+    <div class="feature"><b>Eight languages</b><span>Hebrew, English, Arabic, Russian, Spanish, French, Thai and Lao, with RTL cards.</span></div>
+    <div class="feature"><b>Idempotent deploy</b><span>Creates tables and columns, uploads both workflows, safe to run twice.</span></div>
+    <div class="feature"><b>Real documentation</b><span>Every node has a note; setup, onboarding, updating and rollback are documented.</span></div>
+  </div>
+</section>
+
+<section class="wrap" id="gallery">
+  <div class="section-head">
+    <h2>The card is the first thing the customer sees.</h2>
+    <p>Rendered locally, uploaded to WhatsApp and sent immediately before the day list. It is a header, not the picker — the list is always the control.</p>
+  </div>
+  <div class="gallery">
+    <div class="shot"><img src="assets/calendar-en.png" alt="English weekly availability card"><small>English — day-first availability</small></div>
+    <div class="shot"><img src="assets/calendar-he.png" alt="Hebrew right-to-left weekly availability card"><small>Hebrew — RTL, right-aligned</small></div>
+    <div class="shot"><img src="assets/calendar-ar.png" alt="Arabic right-to-left weekly availability card"><small>Arabic — RTL script and Arabic comma</small></div>
+    <div class="shot"><img src="assets/calendar-th.png" alt="Thai weekly availability card"><small>Thai — Loma font, Latin digits</small></div>
+  </div>
+</section>
+
+<section class="wrap" id="pricing">
+  <div class="section-head">
+    <h2>Two licences. One codebase.</h2>
+    <p>Retail is for one business. Agency is for freelancers and agencies deploying to unlimited client projects. Both include the same v1.5.1 package and twelve months of email support.</p>
+  </div>
+  <div class="price">
+    <div class="price-card light">
+      <div class="tag">Retail licence</div>
+      <div class="big">$39 <small>launch · $49 list</small></div>
+      <ul>
+        <li>One business, one n8n instance</li>
+        <li>36-node booking + 5-node reminder workflow</li>
+        <li>Eight languages and RTL cards</li>
+        <li>160-check test harness, audit and privacy gate</li>
+        <li>Onboarding and safe updater scripts</li>
+        <li>Windows and Linux launchers</li>
+        <li>Setup, updating and handover docs</li>
+        <li>12 months of email support and updates</li>
+      </ul>
+      <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20retail%20kit%20early%20access">Get early access — $39</a>
+      <p class="note">Launch price for the first 50 licences. 14-day refund if it does not import and run as documented.</p>
+    </div>
+    <div class="price-card">
+      <div class="tag">Agency licence</div>
+      <div class="big">$249 <small>launch · $299 list</small></div>
+      <ul>
+        <li>Unlimited client projects</li>
+        <li>Everything in the retail licence</li>
+        <li>Use it as your own delivery kit</li>
+        <li>White-label client-facing docs</li>
+        <li>No resale or redistribution of the source</li>
+        <li>Priority email support</li>
+        <li>12 months of updates</li>
+        <li>Built for n8n freelancers and agencies</li>
+      </ul>
+      <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20agency%20kit%20early%20access">Agency early access — $249</a>
+      <p class="note">Launch price for the first 20 agencies. One agency sale replaces six retail sales.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="req">
+    <div class="card">
+      <h3>What you need</h3>
+      <ul>
+        <li>n8n 2.x, tested on 2.44.4</li>
+        <li>A Meta app with WhatsApp Cloud API and a WABA</li>
+        <li>A spare phone number for the business</li>
+        <li>Google Calendar and a service account</li>
+        <li>An approved utility template with two body parameters</li>
+        <li>Python 3.10+ with Pillow, or Docker, for the helper</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>What it is not</h3>
+      <ul>
+        <li>Not a hosted SaaS — you run it on your n8n</li>
+        <li>Not a no-code product for a non-technical owner</li>
+        <li>Not a clinic management or EMR system</li>
+        <li>Meta business verification for the buyer’s number is the buyer’s responsibility</li>
+        <li>No custom development included</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="faq">
+  <div class="section-head"><h2>Questions before you buy.</h2></div>
+  <details><summary>Do I need to know n8n?</summary><p>You need to import a workflow and add credentials. The setup guide walks through it; the deploy script creates the database work. If you are not technical, buy only if you have someone who can run it.</p></details>
+  <details><summary>Do I need Meta business verification?</summary><p>Yes, for a production number. The kit handles the webhook and templates; Meta handles the business review. The test number is QA-only and limited to a handful of verified recipients.</p></details>
+  <details><summary>Does it work in Hebrew and Arabic?</summary><p>Yes — eight languages, with RTL cards. It detects Hebrew, Arabic, Thai, Lao and Cyrillic automatically; the Language row switches any session.</p></details>
+  <details><summary>Can I use it for clients?</summary><p>With the agency licence, yes, for unlimited client projects. The retail licence covers one business. You may not resell or redistribute the source itself.</p></details>
+  <details><summary>What if it breaks?</summary><p>Twelve months of email support. Send the workflow name, execution ID and error. Refund within 14 days if it does not import and run as documented.</p></details>
+  <details><summary>Does the template contain your data?</summary><p>No. It ships with placeholders only: no tokens, real phone-number IDs, personal names, test logins or embedded credentials. <code>privacy_check.py</code> enforces this.</p></details>
+</section>
+</main>
+
+<div class="final">
+  <h2>Stop rebuilding the same booking flow.</h2>
+  <p>Import the kit, connect the client’s number and calendar, and spend your time on the parts that actually need you.</p>
+  <a class="btn" href="#pricing" style="background:#fff;color:#0c554d">Get the kit</a>
+</div>
+
+<footer class="wrap">
+  <div>FlowFoundry · WhatsApp Appointment Kit for n8n</div>
+  <div>Retail licence · Agency licence · Privacy · Terms · Support</div>
+</footer>
+
+</body>
+</html>
