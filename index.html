@@ -74,6 +74,22 @@
   .phone-shot img{width:auto;max-width:100%;max-height:720px;margin:0 auto;object-fit:contain}
   .workflow-shot img{width:100%;height:auto}
   .workflow-shot a{display:block}
+  .lang-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;font-size:14px}
+  .lang-table th,.lang-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .lang-table th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--accent-2)}
+  .lang-table tr:last-child td{border-bottom:0}
+  .lang-table td:first-child{font-weight:800}
+  .evidence{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px 20px;margin:0 0 18px}
+  .evidence-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .evidence-row:last-child{border-bottom:0}
+  .evidence-row b{display:block;font-size:15px}
+  .evidence-row small{color:var(--muted)}
+  .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:900;white-space:nowrap}
+  .pass{background:#dff1ec;color:#0d6b5f}
+  .pending{background:#f4e6c8;color:#7a4b06}
+  .demo{background:#e8e2d6;color:#5d4a2e}
+  .tree{background:var(--ink);color:#d9efea;border-radius:18px;padding:20px 22px;overflow:auto;white-space:pre;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .tree b{color:#9fe3c2}
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .shot{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}
   .shot img{width:100%;border-radius:10px;display:block}
@@ -131,6 +147,7 @@
     <div class="brand"><span class="mark">F</span> FlowFoundry</div>
     <nav>
       <a href="#features">What's inside</a>
+      <a href="#languages">Languages</a>
       <a href="#proof">Proof</a>
       <a href="#gallery">Screens</a>
       <a href="#pricing">Pricing</a>
@@ -142,7 +159,7 @@
 
 <main>
   <div style="background:#0b1220;color:#9fe3c2;border-bottom:1px solid #1e3a2f;text-align:center;padding:9px 16px;font-size:13px;">
-    Launching soon. Checkout opens after payment verification. <a href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20early%20access" style="color:#7dffb0;">Email for early access</a>.
+    Launching soon. Product v1.5.1 is complete; checkout and store are in test mode while verification is pending. <a href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20early%20access" style="color:#7dffb0;">Email for early access</a>.
   </div>
 
 <section class="wrap hero">
@@ -171,8 +188,8 @@
           <div class="bubble"><b>Sure — here is this week:</b><br>Tap a day to see times.
             <img src="assets/calendar-en.png" alt="Weekly availability card with open days and appointment counts">
           </div>
-          <div class="bubble me">Wednesday 27, 09:00</div>
-          <div class="bubble"><b>Step 3 of 3:</b> Initial consultation · Wed 27/10 · 09:00 · ₪250<br><b>[Confirm] [Change] [Cancel]</b></div>
+          <div class="bubble me">Wednesday 28, 09:00</div>
+          <div class="bubble"><b>Step 3 of 3:</b> Initial consultation · Wed 28/10 · 09:00 · ₪250<br><b>[Confirm] [Change] [Cancel]</b></div>
         </div>
       </div>
     </div>
@@ -193,23 +210,80 @@
     <div class="feature"><b>Eight languages</b><span>Hebrew, English, Arabic, Russian, Spanish, French, Thai and Lao, with RTL cards.</span></div>
     <div class="feature"><b>Idempotent deploy</b><span>Creates tables and columns, uploads both workflows, safe to run twice.</span></div>
     <div class="feature"><b>Real documentation</b><span>Every node has a note; setup, onboarding, updating and rollback are documented.</span></div>
+    <div class="feature"><b>Google Calendar</b><span>Service account sync; no OAuth app and no Google password sharing.</span></div>
+    <div class="feature"><b>Services and hours</b><span>Duration, price, buffer, lead time, lunch breaks, closures and overnight hours.</span></div>
+    <div class="feature"><b>Client onboarding</b><span>Wizard validates Meta, Google and n8n, deploys the client build and writes a handover.</span></div>
+    <div class="feature"><b>Safe updates</b><span>Plan and diff, preserve credentials, snapshot, apply, test and rollback.</span></div>
   </div>
+</section>
+
+<section class="wrap" id="languages">
+  <div class="section-head">
+    <h2>Eight languages, not eight translations of a menu.</h2>
+    <p>The conversation, service names, day/time lists, confirmations and calendar card all follow the selected language. Hebrew and Arabic are RTL; Thai and Lao use the right font and shaping.</p>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="lang-table">
+      <thead><tr><th>Language</th><th>Code</th><th>Direction</th><th>Calendar card</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>English</td><td><code>en</code></td><td>LTR</td><td>DejaVu Sans</td><td>Default fallback</td></tr>
+        <tr><td>Hebrew</td><td><code>he</code></td><td>RTL</td><td>Right-aligned, RTL</td><td>עברית</td></tr>
+        <tr><td>Arabic</td><td><code>ar</code></td><td>RTL</td><td>Noto Sans Arabic, RTL</td><td>العربية</td></tr>
+        <tr><td>Russian</td><td><code>ru</code></td><td>LTR</td><td>Cyrillic-capable font</td><td>Русский</td></tr>
+        <tr><td>Spanish</td><td><code>es</code></td><td>LTR</td><td>DejaVu Sans</td><td>Español</td></tr>
+        <tr><td>French</td><td><code>fr</code></td><td>LTR</td><td>DejaVu Sans</td><td>Français</td></tr>
+        <tr><td>Thai</td><td><code>th</code></td><td>LTR</td><td>Loma font</td><td>ไทย</td></tr>
+        <tr><td>Lao</td><td><code>lo</code></td><td>LTR</td><td>Lao-capable font</td><td>ລາວ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="micro">The language menu can switch any session. The default language is set per client; Hebrew, Arabic and Cyrillic are detected automatically. Thai and Lao are selectable and tested.</p>
+</section>
+
+<section class="wrap" id="contents">
+  <div class="section-head">
+    <h2>A zip that explains itself.</h2>
+    <p>The technical files are grouped together, the guides are separate, and client data lives outside the code. Open START-HERE and ignore the machine room until you need it.</p>
+  </div>
+  <div class="tree"><b>WhatsApp-Appointment-Kit-1.5.1/</b>
+├── START-HERE.md          ← 20-minute install
+├── README.md              ← one-page overview
+├── Client-Manager.bat     ← Windows add/update menu
+├── client-manager.sh      ← Linux/macOS menu
+├── engine/                ← workflows, helper, deployment, tools
+├── docs/                  ← reference, onboarding, QA, languages
+├── client-work/           ← client configs created by the wizard
+└── LICENSE.txt            ← your retail or agency licence</div>
+  <p class="micro">The retail and agency zips contain the same code; the licence file and permitted use differ. License keys are not required and are not used.</p>
 </section>
 
 <section class="wrap" id="proof">
   <div class="section-head">
-    <h2>See the workflow. See it on WhatsApp.</h2>
-    <p>A real booking conversation, the reminder with quick replies, and the node map behind both. Demo data only.</p>
+    <h2>Proof, with the limits shown.</h2>
+    <p>Workflow maps, a demo WhatsApp conversation and a real Google Calendar test event. The chat images are demo renders, not a customer's phone. The calendar capture is from the actual test event.</p>
     <p><a class="btn" href="assets/demo-preview.mp4">Watch the 27-second preview</a></p>
   </div>
+  <div class="evidence">
+    <div class="evidence-row"><div><b>Booking logic</b><small>160 checks across all eight languages</small></div><span class="pill pass">PASS</span></div>
+    <div class="evidence-row"><div><b>Static audit</b><small>Connections, expressions, columns, locks, node notes</small></div><span class="pill pass">0 / 0</span></div>
+    <div class="evidence-row"><div><b>Privacy gate</b><small>No tokens, real phone IDs, emails or credentials in the zip</small></div><span class="pill pass">PASS</span></div>
+    <div class="evidence-row"><div><b>Clean install</b><small>36 booking nodes and 5 reminder nodes import</small></div><span class="pill pass">PASS</span></div>
+    <div class="evidence-row"><div><b>Test-mode checkout</b><small>Retail product paid at $39.00; file attached</small></div><span class="pill pass">PAID</span></div>
+    <div class="evidence-row"><div><b>Google Calendar event</b><small>Real event created by the booking workflow</small></div><span class="pill pass">CAPTURED</span></div>
+    <div class="evidence-row"><div><b>Store verification</b><small>Lemon Squeezy review is still pending</small></div><span class="pill pending">PENDING</span></div>
+    <div class="evidence-row"><div><b>Live file delivery</b><small>Test mode blocks downloads; a live test is still pending</small></div><span class="pill pending">PENDING</span></div>
+    <div class="evidence-row"><div><b>Phone screenshot</b><small>No customer device is attached to this build; chats below are demo renders</small></div><span class="pill demo">DEMO</span></div>
+  </div>
   <div class="proof-grid">
-    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-booking-en.png" alt="WhatsApp booking conversation demo"><small>Booking conversation · demo data</small></div>
+    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-booking-en.png" alt="WhatsApp booking conversation demo"><small>Booking conversation · demo render</small></div>
     <div class="shot workflow-shot"><a href="assets/workflow-booking.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-overview.png" alt="n8n booking workflow overview with 36 nodes"><small>Booking workflow · 36 nodes · open the full map</small></a></div>
   </div>
   <div class="proof-grid proof-lower">
-    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo data</small></div>
+    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo render</small></div>
     <div class="shot workflow-shot"><a href="assets/workflow-reminders.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-reminders.png" alt="n8n reminder workflow map with five nodes"><small>Reminder workflow · 5 nodes · open full size</small></a></div>
   </div>
+  <div class="shot" style="margin-top:18px"><img loading="lazy" src="assets/google-calendar-event.png" alt="Google Calendar test event created by the workflow"><small>Real Google Calendar event created by the workflow · Demo Customer · Wed 28 Oct 2026, 08:00–08:45 Israel time</small></div>
+  <p class="micro">We publish the failures too: live WhatsApp phone capture and live file delivery are not claimed until they are tested.</p>
 </section>
 
 <section class="wrap" id="gallery">
@@ -246,7 +320,7 @@
         <li>12 months of email support and updates</li>
       </ul>
       <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20retail%20kit%20early%20access">Get early access — $39</a>
-      <p class="note">Launch price for the first 50 licences. 14-day refund if it does not import and run as documented.</p>
+      <p class="note">Launch price for the first 50 licences. One payment, no subscription, no licence key. 14-day refund if it does not import and run as documented.</p>
     </div>
     <div class="price-card">
       <div class="tag">Agency licence</div>
@@ -262,7 +336,7 @@
         <li>Built for n8n freelancers and agencies</li>
       </ul>
       <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20agency%20kit%20early%20access">Agency early access — $249</a>
-      <p class="note">Launch price for the first 20 agencies. One agency sale replaces six retail sales.</p>
+      <p class="note">Launch price for the first 20 agencies. One payment, no subscription, no licence key. One agency sale replaces six retail sales.</p>
     </div>
   </div>
 </section>
@@ -275,19 +349,23 @@
         <li>n8n 2.x, tested on 2.44.4</li>
         <li>A Meta app with WhatsApp Cloud API and a WABA</li>
         <li>A spare phone number for the business</li>
-        <li>Google Calendar and a service account</li>
-        <li>An approved utility template with two body parameters</li>
-        <li>Python 3.10+ with Pillow, or Docker, for the helper</li>
+        <li>Google Cloud project with the Calendar API enabled</li>
+        <li>A service account, and the client calendar shared with it</li>
+        <li>An approved <code>appointment_reminder</code> Utility template with two body parameters and Confirm/Cancel quick replies</li>
+        <li>Python 3.10+ with Pillow or Docker, for the helper</li>
+        <li>Linux or Windows host, and admin access to n8n and Meta</li>
       </ul>
     </div>
     <div class="card">
       <h3>What it is not</h3>
       <ul>
-        <li>Not a hosted SaaS — you run it on your n8n</li>
+        <li>Not a hosted SaaS — you run n8n and the helper yourself</li>
+        <li>Not a Meta verification or business-registration service</li>
         <li>Not a no-code product for a non-technical owner</li>
         <li>Not a clinic management or EMR system</li>
-        <li>Meta business verification for the buyer’s number is the buyer’s responsibility</li>
-        <li>No custom development included</li>
+        <li>Not an SMS, Instagram or email appointment system</li>
+        <li>No custom development, setup calls or guaranteed no-show reduction</li>
+        <li>No licence keys — the receipt and <code>LICENSE.txt</code> are the licence record</li>
       </ul>
     </div>
   </div>
@@ -301,6 +379,11 @@
   <details><summary>Can I use it for clients?</summary><p>With the agency licence, yes, for unlimited client projects. The retail licence covers one business. You may not resell or redistribute the source itself.</p></details>
   <details><summary>What if it breaks?</summary><p>Twelve months of email support. Send the workflow name, execution ID and error. Refund within 14 days if it does not import and run as documented.</p></details>
   <details><summary>Does the template contain your data?</summary><p>No. It ships with placeholders only: no tokens, real phone-number IDs, personal names, test logins or embedded credentials. <code>privacy_check.py</code> enforces this.</p></details>
+  <details><summary>Do I need a licence key?</summary><p>No. The product is n8n workflow JSON; a key cannot enforce a copyable file. Your order receipt and the <code>LICENSE.txt</code> inside the zip are the licence record.</p></details>
+  <details><summary>Is the WhatsApp image a real phone screenshot?</summary><p>No. The WhatsApp images are labelled demo renders. The Google Calendar capture is a real test event created by the workflow. We do not claim a customer phone capture we do not have.</p></details>
+  <details><summary>What is tested, and what is not?</summary><p>Tested: 160 logic checks, static audit 0/0, privacy gate, clean 36/5 import, and a paid test-mode checkout at $39. Not yet: live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
+  <details><summary>Do I need a company to buy it?</summary><p>No company is needed to buy the template. A production WhatsApp number may require Meta business verification in your own account; that is between you and Meta, not part of this purchase.</p></details>
+  <details><summary>Does it work with Google Calendar only?</summary><p>Yes. The helper uses a Google service account and Google Calendar API. Outlook, Calendly and other calendar providers are not supported in v1.5.1.</p></details>
 </section>
 </main>
 
