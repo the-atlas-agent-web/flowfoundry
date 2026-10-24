@@ -138,6 +138,16 @@
     h1{letter-spacing:-1.6px}
     .hero-card{padding:14px}
     .price-card{padding:22px}
+    .lang-table thead{display:none}
+    .lang-table,.lang-table tbody,.lang-table tr,.lang-table td{display:block;width:100%}
+    .lang-table tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:12px 0;border-bottom:1px solid var(--line)}
+    .lang-table tr:last-child{border-bottom:0}
+    .lang-table td{border:0;padding:0}
+    .lang-table td:nth-child(1){grid-column:1;font-size:16px}
+    .lang-table td:nth-child(2){grid-column:2;grid-row:1;color:var(--muted);font-size:13px}
+    .lang-table td:nth-child(3){grid-column:1;font-size:12px;color:var(--muted)}
+    .lang-table td:nth-child(4),.lang-table td:nth-child(5){grid-column:1/-1;font-size:12px;color:var(--muted)}
+    .tree{font-size:11px;padding:16px}
   }
 </style>
 </head>
@@ -260,7 +270,7 @@
 <section class="wrap" id="proof">
   <div class="section-head">
     <h2>Proof, with the limits shown.</h2>
-    <p>Workflow maps, a demo WhatsApp conversation and a real Google Calendar test event. The chat images are demo renders, not a customer's phone. The calendar capture is from the actual test event.</p>
+    <p>Workflow maps, a demo WhatsApp conversation, a live Cloud API acceptance and a real Google Calendar test event. The chat images are demo renders, not a customer's phone. The API and calendar captures are actual test evidence.</p>
     <p><a class="btn" href="assets/demo-preview.mp4">Watch the 27-second preview</a></p>
   </div>
   <div class="evidence">
@@ -269,6 +279,7 @@
     <div class="evidence-row"><div><b>Privacy gate</b><small>No tokens, real phone IDs, emails or credentials in the zip</small></div><span class="pill pass">PASS</span></div>
     <div class="evidence-row"><div><b>Clean install</b><small>36 booking nodes and 5 reminder nodes import</small></div><span class="pill pass">PASS</span></div>
     <div class="evidence-row"><div><b>Test-mode checkout</b><small>Retail product paid at $39.00; file attached</small></div><span class="pill pass">PAID</span></div>
+    <div class="evidence-row"><div><b>WhatsApp Cloud API</b><small>Live template accepted by Meta; test number verified</small></div><span class="pill pass">ACCEPTED</span></div>
     <div class="evidence-row"><div><b>Google Calendar event</b><small>Real event created by the booking workflow</small></div><span class="pill pass">CAPTURED</span></div>
     <div class="evidence-row"><div><b>Store verification</b><small>Lemon Squeezy review is still pending</small></div><span class="pill pending">PENDING</span></div>
     <div class="evidence-row"><div><b>Live file delivery</b><small>Test mode blocks downloads; a live test is still pending</small></div><span class="pill pending">PENDING</span></div>
@@ -282,6 +293,7 @@
     <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo render</small></div>
     <div class="shot workflow-shot"><a href="assets/workflow-reminders.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-reminders.png" alt="n8n reminder workflow map with five nodes"><small>Reminder workflow · 5 nodes · open full size</small></a></div>
   </div>
+  <div class="shot" style="margin-top:18px"><img loading="lazy" src="assets/whatsapp-live-api-proof.png" alt="Live WhatsApp Cloud API acceptance evidence"><small>Actual WhatsApp Cloud API response · template accepted · no token or full recipient number shown</small></div>
   <div class="shot" style="margin-top:18px"><img loading="lazy" src="assets/google-calendar-event.png" alt="Google Calendar test event created by the workflow"><small>Real Google Calendar event created by the workflow · Demo Customer · Wed 28 Oct 2026, 08:00–08:45 Israel time</small></div>
   <p class="micro">We publish the failures too: live WhatsApp phone capture and live file delivery are not claimed until they are tested.</p>
 </section>
