@@ -101,6 +101,15 @@
   .demo{background:#e8e2d6;color:#5d4a2e}
   .tree{background:var(--ink);color:#d9efea;border-radius:18px;padding:20px 22px;overflow:auto;white-space:pre;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   .tree b{color:#9fe3c2}
+  .filemap{background:var(--ink);color:#d9efea;border-radius:18px;padding:18px 20px;
+    font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .filemap b{color:#9fe3c2;font-size:14px}
+  .filemap ul{list-style:none;margin:10px 0 0;padding:0}
+  .filemap li{display:flex;gap:16px;justify-content:space-between;padding:7px 0;
+    border-bottom:1px solid rgba(255,255,255,.07)}
+  .filemap li:last-child{border-bottom:0}
+  .filemap code{color:#9fe3c2;font-weight:700;white-space:nowrap}
+  .filemap span{color:#b9d6ce;text-align:right;font-size:12.5px}
   .shot{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}
   .shot img{width:100%;border-radius:10px;display:block}
   .shot small{display:block;color:var(--muted);margin-top:8px;font-size:12px}
@@ -151,16 +160,24 @@
     h1{letter-spacing:-1.6px}
     .hero-card{padding:14px}
     .price-card{padding:22px}
+    /* Language table: one card per language, two lines, no clipping. */
     .lang-table thead{display:none}
-    .lang-table,.lang-table tbody,.lang-table tr,.lang-table td{display:block;width:100%}
-    .lang-table tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:12px 0;border-bottom:1px solid var(--line)}
-    .lang-table tr:last-child{border-bottom:0}
-    .lang-table td{border:0;padding:0}
-    .lang-table td:nth-child(1){grid-column:1;font-size:16px}
-    .lang-table td:nth-child(2){grid-column:2;grid-row:1;color:var(--muted);font-size:13px}
-    .lang-table td:nth-child(3){grid-column:1;font-size:12px;color:var(--muted)}
-    .lang-table td:nth-child(4),.lang-table td:nth-child(5){grid-column:1/-1;font-size:12px;color:var(--muted)}
-    .tree{font-size:11px;padding:16px}
+    .lang-table{display:block;width:100%;background:none;border:0;border-radius:0;overflow:visible}
+    .lang-table tbody{display:block}
+    .lang-table tr{position:relative;display:block;padding:14px 16px 12px;margin-bottom:10px;
+      background:var(--card);border:1px solid var(--line);border-radius:14px}
+    .lang-table tr:last-child{margin-bottom:0}
+    .lang-table td{display:inline;border:0;padding:0;font-size:12px;color:var(--muted)}
+    .lang-table td:nth-child(1){display:block;font-size:16px;font-weight:800;color:var(--ink);
+      padding-right:96px;margin-bottom:2px}
+    .lang-table td:nth-child(2)::after{content:" · "}
+    .lang-table td:nth-child(3)::after{content:" · "}
+    .lang-table td:nth-child(5){position:absolute;top:14px;right:16px;max-width:90px;
+      text-align:right;font-size:13px;color:var(--ink)}
+    .tree{font-size:10.5px;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:hidden}
+    .filemap{padding:16px;font-size:12px}
+    .filemap li{display:block}
+    .filemap span{display:block;text-align:left;margin-top:2px;font-size:12px}
     .chat-story,.picker-strip{grid-template-columns:1fr}
     .picker-strip .shot img{height:auto;max-height:420px;object-fit:contain}
   }
@@ -239,12 +256,12 @@
   </div>
   <div style="overflow-x:auto">
     <table class="lang-table">
-      <thead><tr><th>Language</th><th>Code</th><th>Direction</th><th>Calendar card</th><th>Notes</th></tr></thead>
+      <thead><tr><th>Language</th><th>Code</th><th>Direction</th><th>Card font</th><th>Native name</th></tr></thead>
       <tbody>
         <tr><td>English</td><td><code>en</code></td><td>LTR</td><td>DejaVu Sans</td><td>Default fallback</td></tr>
-        <tr><td>Hebrew</td><td><code>he</code></td><td>RTL</td><td>Right-aligned, RTL</td><td>עברית</td></tr>
-        <tr><td>Arabic</td><td><code>ar</code></td><td>RTL</td><td>Amiri (Arabic + Latin), RTL</td><td>العربية</td></tr>
-        <tr><td>Russian</td><td><code>ru</code></td><td>LTR</td><td>Cyrillic-capable font</td><td>Русский</td></tr>
+        <tr><td>Hebrew</td><td><code>he</code></td><td>RTL</td><td>DejaVu Sans</td><td>עברית</td></tr>
+        <tr><td>Arabic</td><td><code>ar</code></td><td>RTL</td><td>Amiri (Arabic + Latin)</td><td>العربية</td></tr>
+        <tr><td>Russian</td><td><code>ru</code></td><td>LTR</td><td>DejaVu Sans</td><td>Русский</td></tr>
         <tr><td>Spanish</td><td><code>es</code></td><td>LTR</td><td>DejaVu Sans</td><td>Español</td></tr>
         <tr><td>French</td><td><code>fr</code></td><td>LTR</td><td>DejaVu Sans</td><td>Français</td></tr>
         <tr><td>Portuguese</td><td><code>pt</code></td><td>LTR</td><td>DejaVu Sans</td><td>Português</td></tr>
@@ -254,10 +271,10 @@
         <tr><td>Hindi</td><td><code>hi</code></td><td>LTR</td><td>Lohit Devanagari</td><td>हिन्दी</td></tr>
         <tr><td>Indonesian</td><td><code>id</code></td><td>LTR</td><td>DejaVu Sans</td><td>Bahasa Indonesia</td></tr>
         <tr><td>Vietnamese</td><td><code>vi</code></td><td>LTR</td><td>DejaVu Sans</td><td>Tiếng Việt</td></tr>
-        <tr><td>Chinese</td><td><code>zh</code></td><td>LTR</td><td>Noto Sans CJK</td><td>中文</td></tr>
-        <tr><td>Japanese</td><td><code>ja</code></td><td>LTR</td><td>Noto Sans CJK</td><td>日本語</td></tr>
-        <tr><td>Korean</td><td><code>ko</code></td><td>LTR</td><td>Noto Sans CJK</td><td>한국어</td></tr>
-        <tr><td>Thai</td><td><code>th</code></td><td>LTR</td><td>Loma font</td><td>ไทย</td></tr>
+        <tr><td>Chinese</td><td><code>zh</code></td><td>LTR</td><td>Noto Sans CJK SC</td><td>中文</td></tr>
+        <tr><td>Japanese</td><td><code>ja</code></td><td>LTR</td><td>Noto Sans CJK JP</td><td>日本語</td></tr>
+        <tr><td>Korean</td><td><code>ko</code></td><td>LTR</td><td>Noto Sans CJK KR</td><td>한국어</td></tr>
+        <tr><td>Thai</td><td><code>th</code></td><td>LTR</td><td>Loma</td><td>ไทย</td></tr>
         <tr><td>Lao</td><td><code>lo</code></td><td>LTR</td><td>DejaVu Sans</td><td>ລາວ</td></tr>
       </tbody>
     </table>
@@ -283,17 +300,20 @@
     <h2>A zip that explains itself.</h2>
     <p>The technical files are grouped together, the guides are separate, and client data lives outside the code. Open START-HERE and ignore the machine room until you need it.</p>
   </div>
-  <div class="tree"><b>WhatsApp-Appointment-Kit-1.7.0/</b>
-├── SETUP-WINDOWS.bat      ← double-click: guided setup
-├── setup.sh               ← same wizard on Linux/macOS
-├── START-HERE.md          ← what to have ready, what happens next
-├── README.md              ← one-page overview
-├── Client-Manager.bat     ← add or update clients later
-├── client-manager.sh      ← Linux/macOS menu
-├── engine/                ← workflows, helper, deployment, wizard
-├── docs/                  ← reference, Outlook, QA, languages
-├── client-work/           ← your settings, written by the wizard
-└── LICENSE.txt            ← your retail or agency licence</div>
+  <div class="filemap"><b>WhatsApp-Appointment-Kit-1.7.0/</b>
+    <ul>
+      <li><code>SETUP-WINDOWS.bat</code><span>double-click: guided setup</span></li>
+      <li><code>setup.sh</code><span>same wizard on Linux/macOS</span></li>
+      <li><code>START-HERE.md</code><span>what to have ready, what happens next</span></li>
+      <li><code>README.md</code><span>one-page overview</span></li>
+      <li><code>Client-Manager.bat</code><span>add or update clients later</span></li>
+      <li><code>client-manager.sh</code><span>Linux/macOS menu</span></li>
+      <li><code>engine/</code><span>workflows, helper, deployment, wizard</span></li>
+      <li><code>docs/</code><span>reference, Outlook, QA, languages</span></li>
+      <li><code>client-work/</code><span>your settings, written by the wizard</span></li>
+      <li><code>LICENSE.txt</code><span>your retail or agency licence</span></li>
+    </ul>
+  </div>
   <p class="micro">The retail and agency zips contain the same code; the licence file and permitted use differ. License keys are not required and are not used.</p>
 </section>
 
@@ -345,13 +365,13 @@
         <li>One business, one n8n instance</li>
         <li>40-node booking + 7-node reminder workflow</li>
         <li>18 languages and RTL cards</li>
-        <li>530-check test harness, 47-check end-to-end run, audit and privacy gate</li>
+        <li>530-check test harness, 46-check end-to-end run, audit and privacy gate</li>
         <li>Onboarding and safe updater scripts</li>
         <li>Windows and Linux launchers</li>
         <li>Setup, updating and handover docs</li>
         <li>12 months of email support and updates</li>
       </ul>
-      <a class="btn" href="REPLACE_RETAIL_CHECKOUT_URL">Buy retail — $39</a>
+      <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20retail%20licence%20(%2439)">Email for retail — $39</a>
       <p class="note">Launch price for the first 50 licences. One payment, no subscription, no licence key. 14-day refund if it does not import and run as documented.</p>
     </div>
     <div class="price-card">
@@ -367,7 +387,7 @@
         <li>12 months of updates</li>
         <li>Built for n8n freelancers and agencies</li>
       </ul>
-      <a class="btn" href="REPLACE_AGENCY_CHECKOUT_URL">Buy agency — $249</a>
+      <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20agency%20licence%20(%24249)">Email for agency — $249</a>
       <p class="note">Launch price for the first 20 agencies. One payment, no subscription, no licence key. One agency sale replaces six retail sales.</p>
     </div>
   </div>
@@ -413,7 +433,7 @@
   <details><summary>Does the template contain your data?</summary><p>No. It ships with placeholders only: no tokens, real phone-number IDs, personal names, test logins or embedded credentials. <code>privacy_check.py</code> enforces this.</p></details>
   <details><summary>Do I need a licence key?</summary><p>No. The product is n8n workflow JSON; a key cannot enforce a copyable file. Your order receipt and the <code>LICENSE.txt</code> inside the zip are the licence record.</p></details>
   <details><summary>Is the WhatsApp image a real phone screenshot?</summary><p>Yes. The customer-view image is an actual WhatsApp capture from the Meta test number, using the test name “Atlas Testing”. It shows a real booking, real day and time pickers, and the booking receipt. No real customer data is shown.</p></details>
-  <details><summary>What is tested, and what is not?</summary><p>Tested: 530 logic checks, 20 helper tests, a 47-check end-to-end run of the real workflow (including a real Google event created and cancelled), trigger signature and status-filter cases, static audit 0/0, privacy gate, clean 40/7 import, and a paid test-mode checkout at $39. Not yet: a live Outlook tenant run, live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
+  <details><summary>What is tested, and what is not?</summary><p>Tested: 530 logic checks, 20 helper tests, a 46-check end-to-end run of the real workflow (including a real Google event created and cancelled), trigger signature and status-filter cases, static audit 0/0, privacy gate, clean 40/7 import, and a paid test-mode checkout at $39. Not yet: a live Outlook tenant run, live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
   <details><summary>Do I need a company to buy it?</summary><p>No company is needed to buy the template. A production WhatsApp number may require Meta business verification in your own account; that is between you and Meta, not part of this purchase.</p></details>
   <details><summary>Does it work with Outlook?</summary><p>Yes. Set <code>CALENDAR_PROVIDER=outlook</code> and the helper talks to Microsoft Graph with app-only credentials (no user sign-in, no consent screen). Every booking also carries Add-to-Google and Add-to-Outlook links for the customer. Google Calendar remains the default. Calendly is not supported.</p></details>
   <details><summary>Can the customer get back to the menu?</summary><p>Yes. Every list has a Main menu row, and typing <code>menu</code> (or <code>start over</code>, <code>restart</code>, <code>home</code>, <code>0</code>) returns to the menu from any step. <code>back</code> goes one step back. Hours, prices and human answers do not cancel a booking in progress.</p></details>
@@ -430,14 +450,5 @@
   <div>FlowFoundry · WhatsApp Appointment Kit for n8n</div>
   <div>Retail licence · Agency licence · <a href="legal.html#privacy">Privacy</a> · <a href="legal.html#terms">Terms</a> · <a href="mailto:the.atlas.agent@proton.me">Support</a></div>
 </footer>
-<script>
-  // Draft guard: replace the two REPLACE_* URLs in the pricing cards before publishing.
-  document.querySelectorAll('a[href^="REPLACE_"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      alert('Checkout is being connected. The launch link will be added before the page is published.');
-    });
-  });
-</script>
 </body>
 </html>
