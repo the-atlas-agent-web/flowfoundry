@@ -72,6 +72,8 @@
   .proof-grid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:18px;align-items:start}
   .proof-lower{margin-top:18px}
   .phone-shot img{width:auto;max-width:100%;max-height:720px;margin:0 auto;object-fit:contain}
+  .real-chat img{width:100%;max-height:none;object-fit:contain}
+  .real-extra{display:grid;gap:14px}
   .workflow-shot img{width:100%;height:auto}
   .workflow-shot a{display:block}
   .lang-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;font-size:14px}
@@ -156,8 +158,8 @@
     <nav>
       <a href="#features">What's inside</a>
       <a href="#languages">Languages</a>
-      <a href="#proof">Proof</a>
-      <a href="#demo">Demo</a>
+      <a href="#demo">Chat</a>
+      <a href="#proof">Workflow</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -190,7 +192,7 @@
   <div class="hero-card">
     <div class="phone">
       <div class="phone-screen">
-        <p class="chat-label">WhatsApp · Demo Business · demo data</p>
+        <p class="chat-label">WhatsApp · Meta test number · test data</p>
         <div class="chat">
           <div class="bubble me">Hi, can I book an appointment?</div>
           <div class="bubble"><b>Sure — here is this week:</b><br>Tap a day to see times.
@@ -265,10 +267,28 @@
   <p class="micro">The retail and agency zips contain the same code; the licence file and permitted use differ. License keys are not required and are not used.</p>
 </section>
 
+<section class="wrap" id="demo">
+  <div class="section-head">
+    <h2>Real WhatsApp. Real booking.</h2>
+    <p>This is the actual WhatsApp conversation with the Meta test number, not a render. It shows the menu, the service step, the native day and time pickers, the name step, the confirmation, and the booked receipt. The test name is <b>Atlas Testing</b>; no real customer data is shown.</p>
+  </div>
+  <div class="proof-grid">
+    <div class="shot phone-shot real-chat">
+      <a href="assets/whatsapp-real-chat.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/whatsapp-real-chat.jpg" alt="Actual WhatsApp booking conversation on the Meta test number"></a>
+      <small>Actual WhatsApp chat · Meta test number · opens full size</small>
+    </div>
+    <div class="real-extra">
+      <div class="shot"><img loading="lazy" src="assets/whatsapp-real-options.jpg" alt="Actual WhatsApp option picker from the test chat"><small>Actual option picker · Book, Cancel, Hours, Prices, Language, Human</small></div>
+      <div class="shot"><img loading="lazy" src="assets/whatsapp-real-days.jpg" alt="Actual WhatsApp day picker from the test chat"><small>Actual day picker · live availability from the test calendar</small></div>
+      <div class="shot"><img loading="lazy" src="assets/whatsapp-real-times.jpg" alt="Actual WhatsApp time picker from the test chat"><small>Actual time picker · native WhatsApp list</small></div>
+    </div>
+  </div>
+</section>
+
 <section class="wrap" id="proof">
   <div class="section-head">
     <h2>See the workflow do the work.</h2>
-    <p>These are actual captures: the imported n8n workflow in the editor, and a real event in the kit's test Google Calendar created through the same service-account integration. Demo customer data only.</p>
+    <p>The workflow and calendar behind the chat above. Both are actual captures: the imported n8n editor and the test Google Calendar used by the booking flow.</p>
   </div>
   <div class="shot workflow-shot">
     <a href="assets/n8n-workflow-canvas.png" target="_blank" rel="noopener">
@@ -279,18 +299,6 @@
   <div class="shot" style="margin-top:18px">
     <img loading="lazy" src="assets/google-calendar-week.png" alt="Actual Google Calendar week view with eight demo appointments">
     <small>Actual Google Calendar week view · test calendar · eight demo appointments · 26–29 Oct 2026</small>
-  </div>
-</section>
-
-<section class="wrap" id="demo">
-  <div class="section-head">
-    <h2>The customer view — demo render.</h2>
-    <p>The WhatsApp chat and reminder below are product renders with fictional data, not a phone screenshot. They show the intended conversation; the proof section above shows the actual n8n and Google Calendar captures.</p>
-    <p><a class="btn ghost" href="assets/demo-preview.mp4">Watch the 27-second preview</a></p>
-  </div>
-  <div class="proof-grid">
-    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-booking-en.png" alt="WhatsApp booking conversation demo"><small>Booking conversation · demo render</small></div>
-    <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo render</small></div>
   </div>
 </section>
 
@@ -374,7 +382,7 @@
   <details><summary>What if it breaks?</summary><p>Twelve months of email support. Send the workflow name, execution ID and error. Refund within 14 days if it does not import and run as documented.</p></details>
   <details><summary>Does the template contain your data?</summary><p>No. It ships with placeholders only: no tokens, real phone-number IDs, personal names, test logins or embedded credentials. <code>privacy_check.py</code> enforces this.</p></details>
   <details><summary>Do I need a licence key?</summary><p>No. The product is n8n workflow JSON; a key cannot enforce a copyable file. Your order receipt and the <code>LICENSE.txt</code> inside the zip are the licence record.</p></details>
-  <details><summary>Is the WhatsApp image a real phone screenshot?</summary><p>No. The WhatsApp images are labelled demo renders. The Google Calendar capture is a real test event created by the workflow. We do not claim a customer phone capture we do not have.</p></details>
+  <details><summary>Is the WhatsApp image a real phone screenshot?</summary><p>Yes. The customer-view image is an actual WhatsApp capture from the Meta test number, using the test name “Atlas Testing”. It shows a real booking, real day and time pickers, and the booking receipt. No real customer data is shown.</p></details>
   <details><summary>What is tested, and what is not?</summary><p>Tested: 160 logic checks, static audit 0/0, privacy gate, clean 36/5 import, and a paid test-mode checkout at $39. Not yet: live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
   <details><summary>Do I need a company to buy it?</summary><p>No company is needed to buy the template. A production WhatsApp number may require Meta business verification in your own account; that is between you and Meta, not part of this purchase.</p></details>
   <details><summary>Does it work with Google Calendar only?</summary><p>Yes. The helper uses a Google service account and Google Calendar API. Outlook, Calendly and other calendar providers are not supported in v1.5.1.</p></details>
