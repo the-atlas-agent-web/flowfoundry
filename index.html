@@ -90,7 +90,6 @@
   .demo{background:#e8e2d6;color:#5d4a2e}
   .tree{background:var(--ink);color:#d9efea;border-radius:18px;padding:20px 22px;overflow:auto;white-space:pre;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   .tree b{color:#9fe3c2}
-  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .shot{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}
   .shot img{width:100%;border-radius:10px;display:block}
   .shot small{display:block;color:var(--muted);margin-top:8px;font-size:12px}
@@ -134,7 +133,6 @@
   @media(max-width:520px){
     .wrap{width:calc(100% - 28px)}
     .features{grid-template-columns:1fr}
-    .gallery{grid-template-columns:1fr}
     h1{letter-spacing:-1.6px}
     .hero-card{padding:14px}
     .price-card{padding:22px}
@@ -160,7 +158,6 @@
       <a href="#languages">Languages</a>
       <a href="#proof">Proof</a>
       <a href="#demo">Demo</a>
-      <a href="#gallery">Screens</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -298,20 +295,6 @@
   <div class="proof-grid">
     <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-booking-en.png" alt="WhatsApp booking conversation demo"><small>Booking conversation · demo render</small></div>
     <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo render</small></div>
-  </div>
-</section>
-
-<section class="wrap" id="gallery">
-  <div class="section-head">
-    <h2>The card is the first thing the customer sees.</h2>
-    <p>Rendered locally, uploaded to WhatsApp and sent immediately before the day list. It is a header, not the picker — the list is always the control.</p>
-  </div>
-  <div class="gallery">
-    <div class="shot"><img src="assets/calendar-en.png" alt="English weekly availability card"><small>English — day-first availability</small></div>
-    <div class="shot"><img src="assets/calendar-he.png" alt="Hebrew right-to-left weekly availability card"><small>Hebrew — RTL, right-aligned</small></div>
-    <div class="shot"><img src="assets/calendar-ar.png" alt="Arabic right-to-left weekly availability card"><small>Arabic — RTL script and Arabic comma</small></div>
-    <div class="shot"><img src="assets/calendar-th.png" alt="Thai weekly availability card"><small>Thai — Loma font, Latin digits</small></div>
-    <div class="shot"><img src="assets/calendar-lo.png" alt="Lao weekly availability card"><small>Lao — Lao script, Latin digits</small></div>
   </div>
 </section>
 
