@@ -42,6 +42,9 @@
     box-shadow:0 30px 70px rgba(13,43,39,.18);position:relative;overflow:hidden}
   .hero-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;
     background:rgba(223,241,236,.12);right:-100px;bottom:-120px}
+  .hero-shot{display:block;max-width:340px;margin:0 auto;border-radius:22px;overflow:hidden;position:relative;z-index:1;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+  .hero-shot img{display:block;width:100%;height:auto}
+  .hero-note{position:relative;z-index:1;text-align:center;color:#9fc7c1;font-size:12px;margin:12px 0 0}
   .phone{background:#e9e2d5;border-radius:24px;padding:10px;max-width:330px;margin:0 auto;position:relative;z-index:1}
   .phone-screen{background:#efe9dd;border-radius:18px;padding:12px;color:#132d28}
   .chat{display:grid;gap:8px;font-size:13px;margin-bottom:10px}
@@ -202,19 +205,10 @@
     </div>
   </div>
   <div class="hero-card">
-    <div class="phone">
-      <div class="phone-screen">
-        <p class="chat-label">WhatsApp · Meta test number · test data</p>
-        <div class="chat">
-          <div class="bubble me">Hi, can I book an appointment?</div>
-          <div class="bubble"><b>Sure — here is this week:</b><br>Tap a day to see times.
-            <img src="assets/calendar-en.png" alt="Weekly availability card with open days and appointment counts">
-          </div>
-          <div class="bubble me">Wednesday 28, 09:00</div>
-          <div class="bubble"><b>Step 3 of 3:</b> Initial consultation · Wed 28/10 · 09:00 · ₪250<br><b>[Confirm] [Change] [Cancel]</b></div>
-        </div>
-      </div>
-    </div>
+    <a class="hero-shot" href="assets/whatsapp-real-chat.jpg" target="_blank" rel="noopener">
+      <img src="assets/whatsapp-real-chat-1.jpg" alt="Actual WhatsApp chat showing the booking menu and start of a booking" loading="eager">
+    </a>
+    <p class="hero-note">Actual WhatsApp · Meta test number · test booking</p>
   </div>
 </section>
 
