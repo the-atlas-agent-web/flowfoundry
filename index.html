@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WhatsApp Appointment Kit for n8n — FlowFoundry</title>
-<meta name="description" content="A complete WhatsApp appointment kit for n8n: booking, reminders, cancellation, visual availability card and eight languages. 36 booking nodes, 5 reminder nodes, 160 checks.">
+<meta name="description" content="A complete WhatsApp appointment kit for n8n: booking, reminders, cancellation, visual availability card, Google or Outlook calendar and 18 languages. 40 booking nodes, 7 reminder nodes, 530 checks.">
 <style>
   :root{
     --ink:#0d2b27; --ink-2:#173f39; --paper:#f6f1e7; --card:#fffdf8;
@@ -172,6 +172,7 @@
     <div class="brand"><span class="mark">F</span> FlowFoundry</div>
     <nav>
       <a href="#features">What's inside</a>
+      <a href="#setup">Setup</a>
       <a href="#languages">Languages</a>
       <a href="#demo">Chat</a>
       <a href="#proof">Workflow</a>
@@ -183,24 +184,20 @@
 </header>
 
 <main>
-  <div style="background:#0b1220;color:#9fe3c2;border-bottom:1px solid #1e3a2f;text-align:center;padding:9px 16px;font-size:13px;">
-    Launching soon. Product v1.5.1 is complete; checkout and store are in test mode while verification is pending. <a href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20early%20access" style="color:#7dffb0;">Email for early access</a>.
-  </div>
-
 <section class="wrap hero">
   <div>
-    <span class="eyebrow">n8n 2.x · WhatsApp Cloud API · 8 languages</span>
+    <span class="eyebrow">n8n 2.x · WhatsApp Cloud API · 18 languages</span>
     <h1>A WhatsApp receptionist you can import.</h1>
-    <p class="lead">The complete appointment kit for n8n: booking, confirmations, a visual availability card, 24-hour reminders with Confirm/Cancel, and cancellation for customers with more than one appointment.</p>
+    <p class="lead">The complete appointment kit for n8n: booking, confirmations, a visual availability card, 24-hour reminders with Confirm/Cancel, and cancellation for customers with more than one appointment. Google Calendar or Outlook, and a main menu one tap away from every step.</p>
     <div class="actions">
-      <a class="btn" href="#pricing">Get early access — $39</a>
+      <a class="btn" href="#pricing">Buy retail — $39</a>
       <a class="btn ghost" href="#pricing">Agency licence — $249</a>
     </div>
     <p class="micro">Launch price for the first 50 retail / 20 agency licences. 14-day refund. No subscription.</p>
     <div class="stats">
-      <div class="stat"><b>36</b><span>booking nodes</span></div>
-      <div class="stat"><b>5</b><span>reminder nodes</span></div>
-      <div class="stat"><b>160</b><span>logic checks</span></div>
+      <div class="stat"><b>40</b><span>booking nodes</span></div>
+      <div class="stat"><b>7</b><span>reminder nodes</span></div>
+      <div class="stat"><b>339</b><span>logic checks</span></div>
       <div class="stat"><b>8</b><span>languages</span></div>
     </div>
   </div>
@@ -223,10 +220,12 @@
     <div class="feature"><b>Failure compensation</b><span>If the appointment row fails after the calendar event is created, the event is deleted and the slot released.</span></div>
     <div class="feature"><b>Reminder actions</b><span>Confirm arrival or cancel from the template buttons; the bot updates the right appointment.</span></div>
     <div class="feature"><b>Multiple appointments</b><span>“Cancel” returns a list, so the customer chooses which booking to cancel.</span></div>
-    <div class="feature"><b>Eight languages</b><span>Hebrew, English, Arabic, Russian, Spanish, French, Thai and Lao, with RTL cards.</span></div>
+    <div class="feature"><b>18 languages</b><span>Hebrew, English, Arabic, Russian, Spanish, French, Thai and Lao, with RTL cards.</span></div>
     <div class="feature"><b>Idempotent deploy</b><span>Creates tables and columns, uploads both workflows, safe to run twice.</span></div>
     <div class="feature"><b>Real documentation</b><span>Every node has a note; setup, onboarding, updating and rollback are documented.</span></div>
-    <div class="feature"><b>Google Calendar</b><span>Service account sync; no OAuth app and no Google password sharing.</span></div>
+    <div class="feature"><b>Google or Outlook</b><span>Service-account Google Calendar or Microsoft Graph for Outlook/M365. No OAuth app, no password, no credential in n8n.</span></div>
+    <div class="feature"><b>Navigation that works</b><span>Main menu from any step, one-step back, and hours/prices answers that keep the booking alive.</span></div>
+    <div class="feature"><b>Hardened input</b><span>Name and text sanitizing, five-id dedupe, invalid-sender gate, and a calendar-outage guard against fake availability.</span></div>
     <div class="feature"><b>Services and hours</b><span>Duration, price, buffer, lead time, lunch breaks, closures and overnight hours.</span></div>
     <div class="feature"><b>Client onboarding</b><span>Wizard validates Meta, Google and n8n, deploys the client build and writes a handover.</span></div>
     <div class="feature"><b>Safe updates</b><span>Plan and diff, preserve credentials, snapshot, apply, test and rollback.</span></div>
@@ -235,7 +234,7 @@
 
 <section class="wrap" id="languages">
   <div class="section-head">
-    <h2>Eight languages, not eight translations of a menu.</h2>
+    <h2>18 languages, not one translated menu.</h2>
     <p>The conversation, service names, day/time lists, confirmations and calendar card all follow the selected language. Hebrew and Arabic are RTL; Thai and Lao use the right font and shaping.</p>
   </div>
   <div style="overflow-x:auto">
@@ -244,16 +243,39 @@
       <tbody>
         <tr><td>English</td><td><code>en</code></td><td>LTR</td><td>DejaVu Sans</td><td>Default fallback</td></tr>
         <tr><td>Hebrew</td><td><code>he</code></td><td>RTL</td><td>Right-aligned, RTL</td><td>עברית</td></tr>
-        <tr><td>Arabic</td><td><code>ar</code></td><td>RTL</td><td>Noto Sans Arabic, RTL</td><td>العربية</td></tr>
+        <tr><td>Arabic</td><td><code>ar</code></td><td>RTL</td><td>Amiri (Arabic + Latin), RTL</td><td>العربية</td></tr>
         <tr><td>Russian</td><td><code>ru</code></td><td>LTR</td><td>Cyrillic-capable font</td><td>Русский</td></tr>
         <tr><td>Spanish</td><td><code>es</code></td><td>LTR</td><td>DejaVu Sans</td><td>Español</td></tr>
         <tr><td>French</td><td><code>fr</code></td><td>LTR</td><td>DejaVu Sans</td><td>Français</td></tr>
+        <tr><td>Portuguese</td><td><code>pt</code></td><td>LTR</td><td>DejaVu Sans</td><td>Português</td></tr>
+        <tr><td>German</td><td><code>de</code></td><td>LTR</td><td>DejaVu Sans</td><td>Deutsch</td></tr>
+        <tr><td>Italian</td><td><code>it</code></td><td>LTR</td><td>DejaVu Sans</td><td>Italiano</td></tr>
+        <tr><td>Turkish</td><td><code>tr</code></td><td>LTR</td><td>DejaVu Sans</td><td>Türkçe</td></tr>
+        <tr><td>Hindi</td><td><code>hi</code></td><td>LTR</td><td>Lohit Devanagari</td><td>हिन्दी</td></tr>
+        <tr><td>Indonesian</td><td><code>id</code></td><td>LTR</td><td>DejaVu Sans</td><td>Bahasa Indonesia</td></tr>
+        <tr><td>Vietnamese</td><td><code>vi</code></td><td>LTR</td><td>DejaVu Sans</td><td>Tiếng Việt</td></tr>
+        <tr><td>Chinese</td><td><code>zh</code></td><td>LTR</td><td>Noto Sans CJK</td><td>中文</td></tr>
+        <tr><td>Japanese</td><td><code>ja</code></td><td>LTR</td><td>Noto Sans CJK</td><td>日本語</td></tr>
+        <tr><td>Korean</td><td><code>ko</code></td><td>LTR</td><td>Noto Sans CJK</td><td>한국어</td></tr>
         <tr><td>Thai</td><td><code>th</code></td><td>LTR</td><td>Loma font</td><td>ไทย</td></tr>
-        <tr><td>Lao</td><td><code>lo</code></td><td>LTR</td><td>Lao-capable font</td><td>ລາວ</td></tr>
+        <tr><td>Lao</td><td><code>lo</code></td><td>LTR</td><td>DejaVu Sans</td><td>ລາວ</td></tr>
       </tbody>
     </table>
   </div>
   <p class="micro">The language menu can switch any session. The default language is set per client; Hebrew, Arabic and Cyrillic are detected automatically. Thai and Lao are selectable and tested.</p>
+</section>
+
+<section class="wrap" id="setup">
+  <div class="section-head">
+    <h2>One file. No config files.</h2>
+    <p>Double-click <b>SETUP-WINDOWS.bat</b> (or run <code>./setup.sh</code>). The wizard asks plain questions, starts n8n and the helper with Docker, proves the calendar with a real create-and-delete, checks the Meta token, installs both workflows, attaches the WhatsApp credential and activates them.</p>
+  </div>
+  <div class="features">
+    <div class="feature"><b>Defaults everywhere</b><span>Press Enter to accept. Every question says where to find the value.</span></div>
+    <div class="feature"><b>Self-healing</b><span>The doctor restarts a stopped helper or reactivates a workflow. Re-running setup keeps your data.</span></div>
+    <div class="feature"><b>Safe to repeat</b><span>Credentials and the trigger webhook URL survive updates, so Meta keeps working.</span></div>
+    <div class="feature"><b>18 languages</b><span>Pick the default in the wizard; customers switch any time from the menu.</span></div>
+  </div>
 </section>
 
 <section class="wrap" id="contents">
@@ -261,14 +283,16 @@
     <h2>A zip that explains itself.</h2>
     <p>The technical files are grouped together, the guides are separate, and client data lives outside the code. Open START-HERE and ignore the machine room until you need it.</p>
   </div>
-  <div class="tree"><b>WhatsApp-Appointment-Kit-1.5.1/</b>
-├── START-HERE.md          ← 20-minute install
+  <div class="tree"><b>WhatsApp-Appointment-Kit-1.7.0/</b>
+├── SETUP-WINDOWS.bat      ← double-click: guided setup
+├── setup.sh               ← same wizard on Linux/macOS
+├── START-HERE.md          ← what to have ready, what happens next
 ├── README.md              ← one-page overview
-├── Client-Manager.bat     ← Windows add/update menu
+├── Client-Manager.bat     ← add or update clients later
 ├── client-manager.sh      ← Linux/macOS menu
-├── engine/                ← workflows, helper, deployment, tools
-├── docs/                  ← reference, onboarding, QA, languages
-├── client-work/           ← client configs created by the wizard
+├── engine/                ← workflows, helper, deployment, wizard
+├── docs/                  ← reference, Outlook, QA, languages
+├── client-work/           ← your settings, written by the wizard
 └── LICENSE.txt            ← your retail or agency licence</div>
   <p class="micro">The retail and agency zips contain the same code; the licence file and permitted use differ. License keys are not required and are not used.</p>
 </section>
@@ -298,9 +322,9 @@
   </div>
   <div class="shot workflow-shot">
     <a href="assets/n8n-workflow-canvas.png" target="_blank" rel="noopener">
-      <img loading="lazy" src="assets/n8n-workflow-canvas.png" alt="Actual n8n editor showing the 36-node booking workflow">
+      <img loading="lazy" src="assets/n8n-workflow-canvas.png" alt="Actual n8n editor showing the 40-node booking workflow">
     </a>
-    <small>Actual n8n editor · 36-node booking workflow · open full size</small>
+    <small>Actual n8n editor · 40-node booking workflow · open full size</small>
   </div>
   <div class="shot" style="margin-top:18px">
     <img loading="lazy" src="assets/google-calendar-week.png" alt="Actual Google Calendar week view with eight demo appointments">
@@ -311,7 +335,7 @@
 <section class="wrap" id="pricing">
   <div class="section-head">
     <h2>Two licences. One codebase.</h2>
-    <p>Retail is for one business. Agency is for freelancers and agencies deploying to unlimited client projects. Both include the same v1.5.1 package and twelve months of email support.</p>
+    <p>Retail is for one business. Agency is for freelancers and agencies deploying to unlimited client projects. Both include the same v1.7.0 package and twelve months of email support.</p>
   </div>
   <div class="price">
     <div class="price-card light">
@@ -319,15 +343,15 @@
       <div class="big">$39 <small>launch · $49 list</small></div>
       <ul>
         <li>One business, one n8n instance</li>
-        <li>36-node booking + 5-node reminder workflow</li>
-        <li>Eight languages and RTL cards</li>
-        <li>160-check test harness, audit and privacy gate</li>
+        <li>40-node booking + 7-node reminder workflow</li>
+        <li>18 languages and RTL cards</li>
+        <li>339-check test harness, 47-check end-to-end run, audit and privacy gate</li>
         <li>Onboarding and safe updater scripts</li>
         <li>Windows and Linux launchers</li>
         <li>Setup, updating and handover docs</li>
         <li>12 months of email support and updates</li>
       </ul>
-      <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20retail%20kit%20early%20access">Get early access — $39</a>
+      <a class="btn" href="REPLACE_RETAIL_CHECKOUT_URL">Buy retail — $39</a>
       <p class="note">Launch price for the first 50 licences. One payment, no subscription, no licence key. 14-day refund if it does not import and run as documented.</p>
     </div>
     <div class="price-card">
@@ -343,7 +367,7 @@
         <li>12 months of updates</li>
         <li>Built for n8n freelancers and agencies</li>
       </ul>
-      <a class="btn" href="mailto:the.atlas.agent@proton.me?subject=FlowFoundry%20agency%20kit%20early%20access">Agency early access — $249</a>
+      <a class="btn" href="REPLACE_AGENCY_CHECKOUT_URL">Buy agency — $249</a>
       <p class="note">Launch price for the first 20 agencies. One payment, no subscription, no licence key. One agency sale replaces six retail sales.</p>
     </div>
   </div>
@@ -383,15 +407,16 @@
   <div class="section-head"><h2>Questions before you buy.</h2></div>
   <details><summary>Do I need to know n8n?</summary><p>You need to import a workflow and add credentials. The setup guide walks through it; the deploy script creates the database work. If you are not technical, buy only if you have someone who can run it.</p></details>
   <details><summary>Do I need Meta business verification?</summary><p>Yes, for a production number. The kit handles the webhook and templates; Meta handles the business review. The test number is QA-only and limited to a handful of verified recipients.</p></details>
-  <details><summary>Does it work in Hebrew and Arabic?</summary><p>Yes — eight languages, with RTL cards. It detects Hebrew, Arabic, Thai, Lao and Cyrillic automatically; the Language row switches any session.</p></details>
+  <details><summary>Does it work in Hebrew and Arabic?</summary><p>Yes — 18 languages, with RTL cards. It detects Hebrew, Arabic, Thai, Lao and Cyrillic automatically; the Language row switches any session.</p></details>
   <details><summary>Can I use it for clients?</summary><p>With the agency licence, yes, for unlimited client projects. The retail licence covers one business. You may not resell or redistribute the source itself.</p></details>
   <details><summary>What if it breaks?</summary><p>Twelve months of email support. Send the workflow name, execution ID and error. Refund within 14 days if it does not import and run as documented.</p></details>
   <details><summary>Does the template contain your data?</summary><p>No. It ships with placeholders only: no tokens, real phone-number IDs, personal names, test logins or embedded credentials. <code>privacy_check.py</code> enforces this.</p></details>
   <details><summary>Do I need a licence key?</summary><p>No. The product is n8n workflow JSON; a key cannot enforce a copyable file. Your order receipt and the <code>LICENSE.txt</code> inside the zip are the licence record.</p></details>
   <details><summary>Is the WhatsApp image a real phone screenshot?</summary><p>Yes. The customer-view image is an actual WhatsApp capture from the Meta test number, using the test name “Atlas Testing”. It shows a real booking, real day and time pickers, and the booking receipt. No real customer data is shown.</p></details>
-  <details><summary>What is tested, and what is not?</summary><p>Tested: 160 logic checks, static audit 0/0, privacy gate, clean 36/5 import, and a paid test-mode checkout at $39. Not yet: live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
+  <details><summary>What is tested, and what is not?</summary><p>Tested: 339 logic checks, 20 helper tests, a 47-check end-to-end run of the real workflow (including a real Google event created and cancelled), trigger signature and status-filter cases, static audit 0/0, privacy gate, clean 40/7 import, and a paid test-mode checkout at $39. Not yet: a live Outlook tenant run, live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
   <details><summary>Do I need a company to buy it?</summary><p>No company is needed to buy the template. A production WhatsApp number may require Meta business verification in your own account; that is between you and Meta, not part of this purchase.</p></details>
-  <details><summary>Does it work with Google Calendar only?</summary><p>Yes. The helper uses a Google service account and Google Calendar API. Outlook, Calendly and other calendar providers are not supported in v1.5.1.</p></details>
+  <details><summary>Does it work with Outlook?</summary><p>Yes. Set <code>CALENDAR_PROVIDER=outlook</code> and the helper talks to Microsoft Graph with app-only credentials (no user sign-in, no consent screen). Every booking also carries Add-to-Google and Add-to-Outlook links for the customer. Google Calendar remains the default. Calendly is not supported.</p></details>
+  <details><summary>Can the customer get back to the menu?</summary><p>Yes. Every list has a Main menu row, and typing <code>menu</code> (or <code>start over</code>, <code>restart</code>, <code>home</code>, <code>0</code>) returns to the menu from any step. <code>back</code> goes one step back. Hours, prices and human answers do not cancel a booking in progress.</p></details>
 </section>
 </main>
 
@@ -405,6 +430,14 @@
   <div>FlowFoundry · WhatsApp Appointment Kit for n8n</div>
   <div>Retail licence · Agency licence · <a href="legal.html#privacy">Privacy</a> · <a href="legal.html#terms">Terms</a> · <a href="mailto:the.atlas.agent@proton.me">Support</a></div>
 </footer>
-
+<script>
+  // Draft guard: replace the two REPLACE_* URLs in the pricing cards before publishing.
+  document.querySelectorAll('a[href^="REPLACE_"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      alert('Checkout is being connected. The launch link will be added before the page is published.');
+    });
+  });
+</script>
 </body>
 </html>
