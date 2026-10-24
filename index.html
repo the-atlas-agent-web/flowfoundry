@@ -159,6 +159,7 @@
       <a href="#features">What's inside</a>
       <a href="#languages">Languages</a>
       <a href="#proof">Proof</a>
+      <a href="#demo">Demo</a>
       <a href="#gallery">Screens</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
@@ -269,33 +270,35 @@
 
 <section class="wrap" id="proof">
   <div class="section-head">
-    <h2>Proof, with the limits shown.</h2>
-    <p>Workflow maps, a demo WhatsApp conversation, a live Cloud API acceptance and a real Google Calendar test event. The chat images are demo renders, not a customer's phone. The API and calendar captures are actual test evidence.</p>
-    <p><a class="btn" href="assets/demo-preview.mp4">Watch the 27-second preview</a></p>
+    <h2>See the workflow do the work.</h2>
+    <p>These are actual captures: the imported n8n workflow in the editor, and a real event in the kit's test Google Calendar created through the same service-account integration. Demo customer data only.</p>
   </div>
-  <div class="evidence">
-    <div class="evidence-row"><div><b>Booking logic</b><small>160 checks across all eight languages</small></div><span class="pill pass">PASS</span></div>
-    <div class="evidence-row"><div><b>Static audit</b><small>Connections, expressions, columns, locks, node notes</small></div><span class="pill pass">0 / 0</span></div>
-    <div class="evidence-row"><div><b>Privacy gate</b><small>No tokens, real phone IDs, emails or credentials in the zip</small></div><span class="pill pass">PASS</span></div>
-    <div class="evidence-row"><div><b>Clean install</b><small>36 booking nodes and 5 reminder nodes import</small></div><span class="pill pass">PASS</span></div>
-    <div class="evidence-row"><div><b>Test-mode checkout</b><small>Retail product paid at $39.00; file attached</small></div><span class="pill pass">PAID</span></div>
-    <div class="evidence-row"><div><b>WhatsApp Cloud API</b><small>Live template accepted by Meta; test number verified</small></div><span class="pill pass">ACCEPTED</span></div>
-    <div class="evidence-row"><div><b>Google Calendar event</b><small>Real event in the kit’s test calendar via the service-account path</small></div><span class="pill pass">CAPTURED</span></div>
-    <div class="evidence-row"><div><b>Store verification</b><small>Lemon Squeezy review is still pending</small></div><span class="pill pending">PENDING</span></div>
-    <div class="evidence-row"><div><b>Live file delivery</b><small>Test mode blocks downloads; a live test is still pending</small></div><span class="pill pending">PENDING</span></div>
-    <div class="evidence-row"><div><b>Phone screenshot</b><small>No customer device is attached to this build; chats below are demo renders</small></div><span class="pill demo">DEMO</span></div>
+  <div class="shot workflow-shot">
+    <a href="assets/n8n-workflow-canvas.png" target="_blank" rel="noopener">
+      <img loading="lazy" src="assets/n8n-workflow-canvas.png" alt="Actual n8n editor showing the 36-node booking workflow">
+    </a>
+    <small>Actual n8n editor · 36-node booking workflow · open full size</small>
+  </div>
+  <div class="shot" style="margin-top:18px">
+    <img loading="lazy" src="assets/n8n-workflow-detail.png" alt="Zoomed actual n8n editor view of the booking workflow nodes">
+    <small>Actual n8n editor · zoomed to the core booking nodes</small>
+  </div>
+  <div class="shot" style="margin-top:18px">
+    <img loading="lazy" src="assets/google-calendar-event.png" alt="Actual Google Calendar event in the kit test calendar">
+    <small>Actual Google Calendar event · test calendar · Demo Customer · Wed 28 Oct 2026, 08:00–08:45 Israel time</small>
+  </div>
+</section>
+
+<section class="wrap" id="demo">
+  <div class="section-head">
+    <h2>The customer view — demo render.</h2>
+    <p>The WhatsApp chat and reminder below are product renders with fictional data, not a phone screenshot. They show the intended conversation; the proof section above shows the actual n8n and Google Calendar captures.</p>
+    <p><a class="btn ghost" href="assets/demo-preview.mp4">Watch the 27-second preview</a></p>
   </div>
   <div class="proof-grid">
     <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-booking-en.png" alt="WhatsApp booking conversation demo"><small>Booking conversation · demo render</small></div>
-    <div class="shot workflow-shot"><a href="assets/workflow-booking.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-overview.png" alt="n8n booking workflow overview with 36 nodes"><small>Booking workflow · 36 nodes · open the full map</small></a></div>
-  </div>
-  <div class="proof-grid proof-lower">
     <div class="shot phone-shot"><img loading="lazy" src="assets/whatsapp-reminder-en.png" alt="WhatsApp reminder with Confirm arrival and Cancel appointment buttons"><small>Reminder with Confirm / Cancel · demo render</small></div>
-    <div class="shot workflow-shot"><a href="assets/workflow-reminders.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/workflow-reminders.png" alt="n8n reminder workflow map with five nodes"><small>Reminder workflow · 5 nodes · open full size</small></a></div>
   </div>
-  <div class="shot" style="margin-top:18px"><img loading="lazy" src="assets/whatsapp-live-api-proof.png" alt="Live WhatsApp Cloud API acceptance evidence"><small>Actual WhatsApp Cloud API response · template accepted · no token or full recipient number shown</small></div>
-  <div class="shot" style="margin-top:18px"><img loading="lazy" src="assets/google-calendar-event.png" alt="Google Calendar event in the kit test calendar"><small>Real Google Calendar event in the test calendar · Demo Customer · Wed 28 Oct 2026, 08:00–08:45 Israel time</small></div>
-  <p class="micro">We publish the failures too: live WhatsApp phone capture and live file delivery are not claimed until they are tested.</p>
 </section>
 
 <section class="wrap" id="gallery">
