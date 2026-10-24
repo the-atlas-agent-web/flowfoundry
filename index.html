@@ -345,7 +345,7 @@
         <li>One business, one n8n instance</li>
         <li>40-node booking + 7-node reminder workflow</li>
         <li>18 languages and RTL cards</li>
-        <li>339-check test harness, 47-check end-to-end run, audit and privacy gate</li>
+        <li>530-check test harness, 47-check end-to-end run, audit and privacy gate</li>
         <li>Onboarding and safe updater scripts</li>
         <li>Windows and Linux launchers</li>
         <li>Setup, updating and handover docs</li>
@@ -413,7 +413,7 @@
   <details><summary>Does the template contain your data?</summary><p>No. It ships with placeholders only: no tokens, real phone-number IDs, personal names, test logins or embedded credentials. <code>privacy_check.py</code> enforces this.</p></details>
   <details><summary>Do I need a licence key?</summary><p>No. The product is n8n workflow JSON; a key cannot enforce a copyable file. Your order receipt and the <code>LICENSE.txt</code> inside the zip are the licence record.</p></details>
   <details><summary>Is the WhatsApp image a real phone screenshot?</summary><p>Yes. The customer-view image is an actual WhatsApp capture from the Meta test number, using the test name “Atlas Testing”. It shows a real booking, real day and time pickers, and the booking receipt. No real customer data is shown.</p></details>
-  <details><summary>What is tested, and what is not?</summary><p>Tested: 339 logic checks, 20 helper tests, a 47-check end-to-end run of the real workflow (including a real Google event created and cancelled), trigger signature and status-filter cases, static audit 0/0, privacy gate, clean 40/7 import, and a paid test-mode checkout at $39. Not yet: a live Outlook tenant run, live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
+  <details><summary>What is tested, and what is not?</summary><p>Tested: 530 logic checks, 20 helper tests, a 47-check end-to-end run of the real workflow (including a real Google event created and cancelled), trigger signature and status-filter cases, static audit 0/0, privacy gate, clean 40/7 import, and a paid test-mode checkout at $39. Not yet: a live Outlook tenant run, live file delivery (test mode disables downloads), Lemon Squeezy store verification, and a production WhatsApp number.</p></details>
   <details><summary>Do I need a company to buy it?</summary><p>No company is needed to buy the template. A production WhatsApp number may require Meta business verification in your own account; that is between you and Meta, not part of this purchase.</p></details>
   <details><summary>Does it work with Outlook?</summary><p>Yes. Set <code>CALENDAR_PROVIDER=outlook</code> and the helper talks to Microsoft Graph with app-only credentials (no user sign-in, no consent screen). Every booking also carries Add-to-Google and Add-to-Outlook links for the customer. Google Calendar remains the default. Calendly is not supported.</p></details>
   <details><summary>Can the customer get back to the menu?</summary><p>Yes. Every list has a Main menu row, and typing <code>menu</code> (or <code>start over</code>, <code>restart</code>, <code>home</code>, <code>0</code>) returns to the menu from any step. <code>back</code> goes one step back. Hours, prices and human answers do not cancel a booking in progress.</p></details>
